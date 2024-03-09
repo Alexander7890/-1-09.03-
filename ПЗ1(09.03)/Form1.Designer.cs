@@ -39,14 +39,16 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(208, 63);
+            this.listBox1.Location = new System.Drawing.Point(208, 80);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(194, 147);
+            this.listBox1.Size = new System.Drawing.Size(195, 121);
             this.listBox1.TabIndex = 0;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -54,7 +56,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(74, 80);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 23);
+            this.button1.Size = new System.Drawing.Size(128, 23);
             this.button1.TabIndex = 1;
             this.button1.Text = "Довання групи";
             this.button1.UseVisualStyleBackColor = true;
@@ -64,7 +66,7 @@
             // 
             this.button2.Location = new System.Drawing.Point(74, 135);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 23);
+            this.button2.Size = new System.Drawing.Size(128, 23);
             this.button2.TabIndex = 2;
             this.button2.Text = "Додавання студента ";
             this.button2.UseVisualStyleBackColor = true;
@@ -73,7 +75,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(463, 63);
+            this.label1.Location = new System.Drawing.Point(447, 133);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 4;
@@ -82,7 +84,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(463, 108);
+            this.label2.Location = new System.Drawing.Point(447, 168);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 5;
@@ -92,7 +94,7 @@
             // 
             this.button3.Location = new System.Drawing.Point(74, 182);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(109, 23);
+            this.button3.Size = new System.Drawing.Size(128, 23);
             this.button3.TabIndex = 6;
             this.button3.Text = "Редагування групи";
             this.button3.UseVisualStyleBackColor = true;
@@ -101,7 +103,7 @@
             // 
             this.button4.Location = new System.Drawing.Point(74, 226);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(109, 23);
+            this.button4.Size = new System.Drawing.Size(128, 23);
             this.button4.TabIndex = 7;
             this.button4.Text = "Редагування студента";
             this.button4.UseVisualStyleBackColor = true;
@@ -142,11 +144,29 @@
             this.button8.Text = " виведення групи, в якій знаходиться студент за прізвищем";
             this.button8.UseVisualStyleBackColor = true;
             // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(450, 80);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(128, 23);
+            this.button9.TabIndex = 12;
+            this.button9.Text = "Вивід інформації";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(218, 226);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 13;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
@@ -179,6 +199,8 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
