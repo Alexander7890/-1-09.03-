@@ -13,6 +13,14 @@ namespace ПЗ1_09._03_
         {
             return string.Join(", ", Students.Select(s => s.Surname));
         }
+        public Student FindStudentBySurname(string surname)
+        {
+            return Students.FirstOrDefault(s => s.Surname == surname);
+        }
+        public List<Student> FindStudentsByGrade(int grade)
+        {
+            return Students.Where(s => s.Grade == grade).ToList();
+        }
 
         public void AddStudent(Student student)
         {

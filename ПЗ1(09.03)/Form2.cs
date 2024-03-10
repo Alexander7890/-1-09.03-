@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ПЗ1_09._03_
@@ -7,7 +8,7 @@ namespace ПЗ1_09._03_
     {
         private Group selectedGroup;
         private Group originalGroup;
-
+        public List<Student> Students { get; set; }
         public Group Group { get; private set; }
 
         public Form2()
@@ -19,6 +20,7 @@ namespace ПЗ1_09._03_
         {
 
         }
+
         public Form2(Group selectedGroup)
         {
             this.selectedGroup = selectedGroup;

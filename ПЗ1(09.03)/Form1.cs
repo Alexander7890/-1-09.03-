@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -18,6 +19,7 @@ namespace ПЗ1_09._03_
             button2.Click += buttonAddStudent_Click;
             button3.Click += buttonEditGroup_Click;
             button4.Click += buttonEditStudent_Click;
+            button5.Click += buttonMoveStudent_Click;
             button9.Click += Output_of_information_Click;
         }
 
@@ -145,6 +147,100 @@ namespace ПЗ1_09._03_
                     }
                 }
             }
+        }
+        private void buttonMoveStudent_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex != -1)
+            {
+                var selectedGroupIndex = listBox1.SelectedIndex;
+
+                if (!string.IsNullOrWhiteSpace(textBox2.Text))
+                {
+                    var studentSurname = textBox2.Text.Trim();
+
+                    // Отримати групу та студента за прізвищем
+                    var selectedGroup = groups[selectedGroupIndex];
+                    var selectedStudent = selectedGroup.FindStudentBySurname(studentSurname);
+
+                    if (selectedStudent != null)
+                    {
+                        // Визначити групу для переміщення
+                        if (int.TryParse(textBox3.Text, out int newGroupIndex) && newGroupIndex >= 0 && newGroupIndex < groups.Count)
+                        {
+                            // Переміщення студента зі старої групи в нову
+                            var newGroup = groups[newGroupIndex];
+                            newGroup.AddStudent(selectedStudent);
+                            selectedGroup.RemoveStudent(selectedStudent);
+
+                            // Оновити відображення груп
+                            DisplayGroups();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Введіть коректний номер нової групи.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Студент з вказаним прізвищем не знайдений.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Введіть прізвище студента для переміщення.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Виберіть групу, з якої потрібно перемістити студента.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private string GetGroupNameByStudent(Student student)
+        {
+            // Перший спосіб: Шукати усі групи
+            var groupWithStudent = groups.FirstOrDefault(g => g.Students.Contains(student));
+            if (groupWithStudent != null)
+            {
+                return groupWithStudent.Name;
+            }
+
+            // Другий спосіб: Шукати в усіх студентах
+            var groupWithStudentAlt = groups.FirstOrDefault(g => g.FindStudentBySurname(student.Surname) != null);
+            return groupWithStudentAlt != null ? groupWithStudentAlt.Name : "Група не знайдена";
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            {
+                if (int.TryParse(textBox4.Text, out int grade))
+                {
+                    List<Student> studentsWithGrade = groups.SelectMany(g => g.FindStudentsByGrade(grade)).ToList();
+
+                    if (studentsWithGrade.Any())
+                    {
+                        StringBuilder result = new StringBuilder("Студенти з оцінкою " + grade + ":");
+                        foreach (var student in studentsWithGrade)
+                        {
+                            result.AppendLine($"- {student.Surname} у групі {GetGroupNameByStudent(student)}");
+                        }
+                        MessageBox.Show(result.ToString(), "Результат пошуку", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Студентів з оцінкою {grade} не знайдено.", "Результат пошуку", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Введіть коректну оцінку для пошуку.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

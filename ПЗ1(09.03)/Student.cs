@@ -8,7 +8,7 @@
 
         public override string ToString()
         {
-            return $"{Surname} ({Grade})";
+            return $"{Index}: {Surname} ({Grade})";
         }
     }
 }
