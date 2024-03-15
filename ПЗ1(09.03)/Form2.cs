@@ -20,7 +20,6 @@ namespace ПЗ1_09._03_
         {
 
         }
-
         public Form2(Group selectedGroup)
         {
             this.selectedGroup = selectedGroup;
@@ -55,7 +54,6 @@ namespace ПЗ1_09._03_
                 MessageBox.Show("Please enter a valid group name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             selectedGroup.Name = textBox1.Text;
             selectedGroup.Specialty = textBox2.Text;
 

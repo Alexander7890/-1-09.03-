@@ -158,21 +158,17 @@ namespace ПЗ1_09._03_
                 {
                     var studentSurname = textBox2.Text.Trim();
 
-                    // Отримати групу та студента за прізвищем
                     var selectedGroup = groups[selectedGroupIndex];
                     var selectedStudent = selectedGroup.FindStudentBySurname(studentSurname);
 
                     if (selectedStudent != null)
                     {
-                        // Визначити групу для переміщення
                         if (int.TryParse(textBox3.Text, out int newGroupIndex) && newGroupIndex >= 0 && newGroupIndex < groups.Count)
                         {
-                            // Переміщення студента зі старої групи в нову
                             var newGroup = groups[newGroupIndex];
                             newGroup.AddStudent(selectedStudent);
                             selectedGroup.RemoveStudent(selectedStudent);
 
-                            // Оновити відображення груп
                             DisplayGroups();
                         }
                         else
@@ -197,14 +193,12 @@ namespace ПЗ1_09._03_
         }
         private string GetGroupNameByStudent(Student student)
         {
-            // Перший спосіб: Шукати усі групи
             var groupWithStudent = groups.FirstOrDefault(g => g.Students.Contains(student));
             if (groupWithStudent != null)
             {
                 return groupWithStudent.Name;
             }
 
-            // Другий спосіб: Шукати в усіх студентах
             var groupWithStudentAlt = groups.FirstOrDefault(g => g.FindStudentBySurname(student.Surname) != null);
             return groupWithStudentAlt != null ? groupWithStudentAlt.Name : "Група не знайдена";
         }
@@ -235,10 +229,36 @@ namespace ПЗ1_09._03_
                     MessageBox.Show("Введіть коректну оцінку для пошуку.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+        private void button6_Click(object sender, EventArgs e)
+        {
+            string surname = textBox5.Text.Trim();
+
+            if (!string.IsNullOrWhiteSpace(surname))
+            {
+                var groupWithStudent = groups.FirstOrDefault(g => g.FindStudentBySurname(surname) != null);
+                if (groupWithStudent != null)
+                {
+                    MessageBox.Show($"Студент {surname} знаходиться у групі: {groupWithStudent.Name}", "Результат пошуку", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show($"Студент {surname} не знайдений у жодній групі.", "Результат пошуку", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Введіть прізвище студента для пошуку.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
 
         }
 
-        private void textBox5_TextChanged(object sender, EventArgs e)
+        
+
+        private void textBox5_TextChanged_1(object sender, EventArgs e)
         {
 
         }

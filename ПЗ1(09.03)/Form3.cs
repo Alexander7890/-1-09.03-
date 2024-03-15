@@ -21,8 +21,6 @@ namespace ПЗ1_09._03_
         public Form3(Student student) : this()
         {
             originalStudent = student;
-
-            // Populate the text boxes with the original student's data
             textBox1.Text = originalStudent.Surname;
             textBox2.Text = originalStudent.Grade.ToString();
         }
@@ -37,7 +35,6 @@ namespace ПЗ1_09._03_
 
             if (originalStudent == null)
             {
-                // Adding a new student
                 Student = new Student
                 {
                     Surname = textBox1.Text,
@@ -46,7 +43,6 @@ namespace ПЗ1_09._03_
             }
             else
             {
-                // Editing an existing student
                 originalStudent.Surname = textBox1.Text;
                 originalStudent.Grade = grade;
             }
