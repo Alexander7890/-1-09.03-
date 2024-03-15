@@ -55,7 +55,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(208, 80);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(195, 121);
+            this.listBox1.Size = new System.Drawing.Size(299, 121);
             this.listBox1.TabIndex = 0;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -82,7 +82,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(447, 133);
+            this.label1.Location = new System.Drawing.Point(534, 133);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 4;
@@ -91,7 +91,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(447, 168);
+            this.label2.Location = new System.Drawing.Point(534, 168);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 5;
@@ -136,7 +136,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(450, 80);
+            this.button9.Location = new System.Drawing.Point(537, 80);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(128, 23);
             this.button9.TabIndex = 12;
